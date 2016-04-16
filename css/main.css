@@ -1,0 +1,118 @@
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+html{
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 12px;
+}
+body{
+    background: #3498DB;
+    color: #ECF0F1;
+}
+::-webkit--placeholder{
+    color: #BBB;
+}
+::-moz-placeholder{
+    color: #BBB;
+    opacity: 1;
+}
+:-ms-input-placeholder{
+    color: #BBB;
+}
+.button{
+    background: #2C3E50;
+    border: none;
+    color: #FFF;
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 15px;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 4px;
+}
+.button.orange{
+    background: #E74C3C;
+}
+
+.row{
+    width: 1000px;
+    margin: 0 auto;
+}
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+    .col{
+        float: left;
+        padding: 0 10px;
+    }
+        .col-center{
+            float: none;
+            margin: 0 auto;
+        }
+        .col-12{
+            width: 100%;
+        }
+        .col-6{
+            width: 50%;
+        }
+        .col-3{
+            width: 25%;
+        }
+        .thumb{
+            width: 200px;
+            padding: 0 25px;
+            margin-bottom: 15px; 
+            line-height: 0;
+        }
+            .thumb > img{
+                border: 1px solid #E74C3C;
+                cursor: pointer;
+            }
+
+header{
+    padding-bottom: 50px;
+    background: #ECF0F1;
+    color: #2980B9;
+}
+header .col{
+    position: relative;
+}
+    header .tag{
+        width: 220px;
+        background: #E74C3C;
+    }
+        header .tag h1{
+            margin: 0.5em 0;
+            color: #ECF0F1;
+        }
+    header input[type="text"]{
+        width: 100%;
+        height: 35px;
+        padding: 6px 12px;
+        margin-bottom: 15px;
+    }
+
+.main{
+    padding-top: 50px;
+}
+
+/** helpers **/
+.text-center{
+    text-align: center;
+}
+.text-right{
+    text-align: right;
+}
+.right{
+    float: right;
+}
+.clear:after {
+    content: "";
+    display: table;
+    clear: both;
+}

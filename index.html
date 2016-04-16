@@ -3,21 +3,29 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Flickr photoset viewer</title>
-        <meta name="description" content="Fetch a Flickr photoset and display it as a lightbox gallery.">
+        <title>Flickr album viewer</title>
+        <meta name="description" content="Fetch a Flickr album and display it as a lightbox gallery.">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="stylesheet" href="css/normalize.min.css">
         <link rel="stylesheet" href="css/main.css">
     </head>
     <body>
-        <div id="container">
-            <header>
-                <input type="text" />
-            </header>
+        <header>
+            <div class="row">
+                <div class="col tag">
+                    <h1>Flickr album viewer</h1>
+                    <input id="search_text" type="text" placeholder="Search" />
+                    <button id="load_photos" class="button right">GO</button>
+                </div>
+                <div id="search_data" class="col-6 col right text-right">
+                    <h2 class="title">Searching for <span>...</span></h2>
+                </div>
+            </div>
+        </header>
+        <div class="main">
+            <div class="row" id="photo_grid">
 
-            <div class="main">
-                <ul id="photo_grid"></ul>
             </div>
         </div>
 
