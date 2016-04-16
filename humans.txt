@@ -1,0 +1,15 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    Diego Rodríguez -- Front End Engineer
+
+# THANKS
+
+    Slack Technologies
+
+# TECHNOLOGY COLOPHON
+
+    HTML5, CSS3
+    Javascript
