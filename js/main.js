@@ -12,13 +12,9 @@ window.onload = function()
 	})
 	.call();
 
-	document.getElementById("load_more").addEventListener("click", function()
+	document.getElementById("load_photos").addEventListener("click", function()
 	{	
 		ajax.search(document.getElementById("search_text").value)
-		.onLoad(function()
-		{
-
-		})
 		.onComplete(function(response)
 		{
 			var search_data = document.getElementById("search_data");
@@ -29,15 +25,41 @@ window.onload = function()
 		})
 		.call();
 	});
+
+	document.getElementById("load_more").addEventListener("click", function()
+	{	
+		var clicked = this;
+
+		ajax.options({
+			page: clicked.getAttribute('data-page'),
+			photos_per_page: clicked.getAttribute('data-perpage')
+		})
+		.onLoad(function()
+		{
+			clicked.innerHTML = "";
+			var loader = document.createElement("IMG");
+			loader.src = "loader.png";
+		
+			clicked.appendChild(loader);
+		})
+		.onComplete(function(response)
+		{
+			displayOnGrid(response, true);
+			clicked.innerHTML = "Load more";
+		})
+		.call();
+	});
 };
 
 
 function displayOnGrid(response, append = false)
 {
 	var grid = document.getElementById("photo_grid");
+	
 	if(!append){
 		grid.innerHTML = "";
 	}
+
 	var photo_list = response.photo;
 	for(var photo_num in photo_list){
 
@@ -50,4 +72,8 @@ function displayOnGrid(response, append = false)
 		
 		grid.appendChild(column);
 	}
+
+	var load_more_button = document.getElementById("load_more");
+	load_more_button.setAttribute('data-page', response.page+1)
+	load_more_button.setAttribute('data-perpage', response.perpage);
 }

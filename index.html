@@ -3,8 +3,8 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Flickr album viewer</title>
-        <meta name="description" content="Fetch a Flickr album and display it as a lightbox gallery.">
+        <title>Flickr photo search</title>
+        <meta name="description" content="Search for photos on Flickr and display them as a lightbox gallery.">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="stylesheet" href="css/normalize.min.css">
@@ -14,7 +14,7 @@
         <header>
             <div class="row">
                 <div class="col tag">
-                    <h1>Flickr album viewer</h1>
+                    <h1>Flickr photo search</h1>
                     <input id="search_text" type="text" placeholder="Search" />
                     <button id="load_photos" class="button right">GO</button>
                 </div>
@@ -26,6 +26,11 @@
         <div class="main">
             <div class="row" id="photo_grid">
 
+            </div>
+            <div class="row">
+                <div class="col-3 col col-center text-center">
+                    <button class="button orange" id="load_more" data-page="" data-perpage="">Load more</button>
+                </div>
             </div>
         </div>
 

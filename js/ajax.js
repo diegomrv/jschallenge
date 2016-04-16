@@ -1,6 +1,6 @@
 var Ajax = (function() {
 
-	var url, onComplete, xhr;
+	var url, onLoad, onComplete, xhr;
 	var options = {
 		search: '',
 		photos_per_page: 10,
@@ -31,22 +31,34 @@ var Ajax = (function() {
 		return this;
 	}
 
-	var doOnComplete = function() {
-		xhr.addEventListener('load', function(e){
-			var obj = JSON.parse(xhr.response);
-			onComplete(obj.photos);
-		});
+	var doOnComplete = function(){
+		var obj = JSON.parse(xhr.response);
+		onComplete(obj.photos);
+	}
+
+	var setOnLoad = function(actions) {
+		if(onLoad !== undefined){
+			xhr.removeEventListener('loadstart', onLoad);
+		}
+		
+		onLoad = actions;
+		xhr.addEventListener('loadstart', onLoad);
+		return this;
 	}
 
 	var setOnComplete = function(actions) {
+		if(onComplete !== undefined){
+			xhr.removeEventListener('load', doOnComplete);
+		}
+
 		onComplete = actions;
-		doOnComplete();
+		xhr.addEventListener('load', doOnComplete);
 		return this;
 	}
 
 	var buildUrl = function(){
 		//url = "https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=d1cbdd4b27721ebd877035f83fd52a0d&photoset_id="+options.photoset_id+"&per_page="+options.photos_per_page+"&format=json&nojsoncallback=1";
-		url = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=d1cbdd4b27721ebd877035f83fd52a0d&text="+options.search+"&min_taken_date=2015-01-01&sort=relevance&privacy_filter=1&safe_search=1&content_type=1&per_page="+options.photos_per_page+"&page="+options.page+"&format=json&nojsoncallback=1";
+		url = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=d1cbdd4b27721ebd877035f83fd52a0d&text="+options.search+"&min_taken_date=2014-01-01&sort=relevance&privacy_filter=1&safe_search=1&content_type=1&per_page="+options.photos_per_page+"&page="+options.page+"&format=json&nojsoncallback=1";
 	}
 
 	var getDefaultSearch = function(){
@@ -67,7 +79,7 @@ var Ajax = (function() {
 	return {
 		init: init,
 		options: extendOptions,
-		onLoad: onLoad,
+		onLoad: setOnLoad,
 		onComplete: setOnComplete,
 		call: call,
 		getSearch: getSearch,
