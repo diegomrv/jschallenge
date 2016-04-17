@@ -17,17 +17,16 @@ var FlickrAPI = (function() {
 		buildUrl();
 		xhr.open("GET", url);
 		xhr.send();
+
+		if(onLoad !== undefined){
+			xhr.removeEventListener('loadstart', onLoad);
+		}
 	}
 
 	var extendOptions = function(user_options) {
 		for(var key in user_options){
 			options[key] = user_options[key];
 		}
-		return this;
-	}
-
-	var onLoad = function(actions) {
-		xhr.addEventListener('loadstart', actions);
 		return this;
 	}
 

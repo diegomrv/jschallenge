@@ -46,7 +46,7 @@ window.onload = function()
 		{
 			clicked.innerHTML = "";
 			var loader = document.createElement("IMG");
-			loader.src = "loader.png";
+			loader.src = "loader.gif";
 		
 			clicked.appendChild(loader);
 		})
@@ -99,8 +99,13 @@ window.onload = function()
 };
 
 //Function to display or append photos on grid
-function displayOnGrid(response, append = false)
+function displayOnGrid(response, append)
 {
+	//Optional default parameter
+	if(append === undefined) {
+		append = false;
+	}
+
 	var grid = document.getElementById("photo_grid");
 	
 	if(!append){
