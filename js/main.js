@@ -58,42 +58,41 @@ window.onload = function()
 		.call();
 	});
 
-	//Save clicked photo
-	var active_photo_container;
-
+	//Listen for click on photo grid but just open lightbox if click was in image
 	document.getElementById("photo_grid").addEventListener("click", function(e){
 		if (e.target !== e.currentTarget) {
 			Lightbox.open(e);
-			active_photo_container = e.target.parentElement;
 	    }
 	    e.stopPropagation();
 	});
 
+	//Listen for keyboard events and do stuff on escape, left arrow and right arrow press
+	//only if lightbox is open
 	document.onkeydown = function(e) {
 		if(Lightbox.isOpen()){
 			switch (e.keyCode) {
 		        case 37:
-		            if(active_photo_container.previousSibling !== null){
-		            	active_photo_container.previousSibling.children[0].click();
+		            if(Lightbox.getActivePhotoContainer().previousSibling !== null){
+		            	//Simulate click on thumbnail image to use all the code already done for that event
+		            	Lightbox.getActivePhotoContainer().previousSibling.children[0].click();
 		            }
 		            break;
 		        case 39:
-		            if(active_photo_container.nextSibling !== null){
-		            	active_photo_container.nextSibling.children[0].click();
+		            if(Lightbox.getActivePhotoContainer().nextSibling !== null){
+		            	Lightbox.getActivePhotoContainer().nextSibling.children[0].click();
 		            }
 		            break;
 				case 27:
 		            Lightbox.close();
-					active_photo_container = undefined;
 		            break;
 		    }
 		}
 	};
 
+	//Check for click on lightbox to close it, do nothing if click was on modal
 	document.getElementById("lightbox").addEventListener("click", function(e){
 		if (e.target === e.currentTarget) {
 			Lightbox.close();
-			active_photo_container = undefined;
 	    }
 	    e.stopPropagation();
 	});

@@ -65,6 +65,7 @@ body{
         }
         .thumb{
             width: 150px;
+            height: 150px;
             padding: 0;
             margin: 0 25px 15px; 
             line-height: 0;
@@ -137,6 +138,12 @@ header .col{
             height: auto;
             max-height: 700px;
         }
+            #lightbox .modal .footer span{
+                cursor: pointer;
+            }
+            #lightbox .modal .footer span:hover{
+                text-decoration: underline;
+            }
     #lightbox .modal.show{
         opacity: 1;
     }
@@ -161,6 +168,9 @@ header .col{
 }
 .text-right{
     text-align: right;
+}
+.left{
+    float: left;
 }
 .right{
     float: right;
