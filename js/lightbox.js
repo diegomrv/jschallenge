@@ -18,6 +18,7 @@ var Lightbox = (function() {
 			modal.innerHTML = "";
 		}
 		modal.style = "";
+		modal.setAttribute("style","");
 		
 		//Get large picture url
 		var img_url = e.target.src;
@@ -64,8 +65,9 @@ var Lightbox = (function() {
 		image.onload = function() {
 			modal.appendChild(image);
 			modal.appendChild(footer);
-			if(this.width < 1000){
-				modal.style.width = this.width+"px";
+			if(this.clientWidth < 1000){
+				modal.setAttribute("style","width:"+this.width+"px");
+				modal.style.width = this.clientWidth+"px";
 			}
 			modal.className = "modal show";
 		}
