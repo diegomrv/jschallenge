@@ -58,9 +58,45 @@ window.onload = function()
 		.call();
 	});
 
-	document.getElementById("photo_grid").addEventListener("click", openLightbox);
+	//Save clicked photo
+	var active_photo_container;
 
-	document.getElementById("lightbox").addEventListener("click", closeLightbox);
+	document.getElementById("photo_grid").addEventListener("click", function(e){
+		if (e.target !== e.currentTarget) {
+			Lightbox.open(e);
+			active_photo_container = e.target.parentElement;
+	    }
+	    e.stopPropagation();
+	});
+
+	document.onkeydown = function(e) {
+		if(Lightbox.isOpen()){
+			switch (e.keyCode) {
+		        case 37:
+		            if(active_photo_container.previousSibling !== null){
+		            	active_photo_container.previousSibling.children[0].click();
+		            }
+		            break;
+		        case 39:
+		            if(active_photo_container.nextSibling !== null){
+		            	active_photo_container.nextSibling.children[0].click();
+		            }
+		            break;
+				case 27:
+		            Lightbox.close();
+					active_photo_container = undefined;
+		            break;
+		    }
+		}
+	};
+
+	document.getElementById("lightbox").addEventListener("click", function(e){
+		if (e.target === e.currentTarget) {
+			Lightbox.close();
+			active_photo_container = undefined;
+	    }
+	    e.stopPropagation();
+	});
 };
 
 //Function to display or append photos on grid
@@ -98,41 +134,4 @@ function displayOnGrid(response, append = false)
 	//Add next page to button
 	var load_more_button = document.getElementById("load_more");
 	load_more_button.setAttribute('data-page', response.page+1);
-}
-
-function openLightbox(e) {
-    if (e.target !== e.currentTarget) {
-        var lightbox = document.getElementById("lightbox").className = "lightbox display";
-		var lightbox_bg = document.getElementById("lightbox-bg").className = "lightbox-bg display";
-		var modal = document.querySelectorAll(".lightbox .modal")[0];
-
-		var img_url = e.target.src;
-		img_url = img_url.slice(0, -5);
-		img_url = img_url+"b.jpg"
-		var image = document.createElement("IMG");
-		image.src = img_url;
-		image.title = e.target.title;
-		modal.appendChild(image);
-
-		//Delay to appreciate css transition
-		window.setTimeout(function(){
-			modal.className = "modal show";
-		}, 300)
-    }
-    e.stopPropagation();
-}
-
-function closeLightbox(e) {
-    if (e.target === e.currentTarget) {
-        var modal = document.querySelectorAll(".lightbox .modal")[0];
-        modal.className = "modal";
-
-		//Delay to appreciate css transition
-		window.setTimeout(function(){
-			modal.innerHTML = "";
-			var lightbox = document.getElementById("lightbox").className = "lightbox";
-			var lightbox_bg = document.getElementById("lightbox-bg").className = "lightbox-bg";
-		}, 300)
-    }
-    e.stopPropagation();
 }

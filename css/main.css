@@ -127,7 +127,6 @@ header .col{
         max-width: 1000px;
         max-height: 750px;
         margin: 30px auto 0;
-        background: #ECF0F1;
         line-height: 0;
         -webkit-transition: opacity 0.3s;
         -moz-transition: opacity 0.3s;
@@ -136,7 +135,7 @@ header .col{
         #lightbox .modal img{
             max-width: 100%;
             height: auto;
-            max-height: 750px;
+            max-height: 700px;
         }
     #lightbox .modal.show{
         opacity: 1;
@@ -149,7 +148,7 @@ header .col{
     left: 0;
     z-index: 990;
     background-color: #000;
-    opacity: 0.5;
+    opacity: 0.7;
     display: none;
 }
 #lightbox-bg.display{
