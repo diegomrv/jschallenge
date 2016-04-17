@@ -1,4 +1,4 @@
-var Ajax = (function() {
+var FlickrAPI = (function() {
 
 	var url, onLoad, onComplete, xhr;
 	var options = {
