@@ -64,11 +64,18 @@ body{
             width: 25%;
         }
         .thumb{
-            width: 200px;
-            padding: 0 25px;
-            margin-bottom: 15px; 
+            width: 150px;
+            padding: 0;
+            margin: 0 25px 15px; 
             line-height: 0;
+            opacity: 0;
+            -webkit-transition: opacity 0.3s;
+            -moz-transition: opacity 0.3s;
+            transition: opacity 0.3s;
         }
+            .thumb.display{
+                opacity: 1;
+            }
             .thumb > img{
                 border: 1px solid #E74C3C;
                 cursor: pointer;
@@ -99,6 +106,54 @@ header .col{
 
 .main{
     padding: 50px 0;
+}
+
+
+#lightbox{
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 999;
+    overflow: hidden;
+    display: none;
+}
+#lightbox.display{
+    display: block;
+}
+    #lightbox .modal{
+        opacity: 0;
+        max-width: 1000px;
+        max-height: 750px;
+        margin: 30px auto 0;
+        background: #ECF0F1;
+        line-height: 0;
+        -webkit-transition: opacity 0.3s;
+        -moz-transition: opacity 0.3s;
+        transition: opacity 0.3s;
+    }
+        #lightbox .modal img{
+            max-width: 100%;
+            height: auto;
+            max-height: 750px;
+        }
+    #lightbox .modal.show{
+        opacity: 1;
+    }
+#lightbox-bg{
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 990;
+    background-color: #000;
+    opacity: 0.5;
+    display: none;
+}
+#lightbox-bg.display{
+    display: block;
 }
 
 /** helpers **/

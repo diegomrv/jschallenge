@@ -15,8 +15,10 @@
             <div class="row">
                 <div class="col tag">
                     <h1>Flickr photo search</h1>
-                    <input id="search_text" type="text" placeholder="Search" />
-                    <button id="load_photos" class="button right">GO</button>
+                    <form id="load_photos">
+                        <input id="search_text" type="text" placeholder="Search" />
+                        <button type="submit" class="button right">GO</button>
+                    </form>
                 </div>
                 <div id="search_data" class="col-6 col right text-right">
                     <h2 class="title">Searching for <span>...</span></h2>
@@ -29,12 +31,17 @@
             </div>
             <div class="row">
                 <div class="col-3 col col-center text-center">
-                    <button class="button orange" id="load_more" data-page="" data-perpage="">Load more</button>
+                    <button class="button orange" id="load_more" data-page="">Load more</button>
                 </div>
             </div>
         </div>
 
-        <script src="js/ajax.js"></script>
+        <div id="lightbox">
+            <div class="modal"></div>
+        </div>
+        <div id="lightbox-bg"></div>
+
+        <script src="js/flickr_api.js"></script>
         <script src="js/main.js"></script>
     </body>
 </html>
