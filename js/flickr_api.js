@@ -17,10 +17,6 @@ var FlickrAPI = (function() {
 		buildUrl();
 		xhr.open("GET", url);
 		xhr.send();
-
-		if(onLoad !== undefined){
-			xhr.removeEventListener('loadstart', onLoad);
-		}
 	}
 
 	var extendOptions = function(user_options) {
@@ -31,6 +27,9 @@ var FlickrAPI = (function() {
 	}
 
 	var doOnComplete = function(){
+		if(onLoad !== undefined){
+			xhr.removeEventListener('loadstart', onLoad);
+		}
 		var obj = JSON.parse(xhr.response);
 		onComplete(obj.photos);
 	}
