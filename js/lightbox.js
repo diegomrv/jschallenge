@@ -3,6 +3,7 @@ var Lightbox = (function() {
 	var lightbox = document.getElementById("lightbox");
 	var lightbox_bg = document.getElementById("lightbox-bg");
 	var modal = document.querySelectorAll("#lightbox .modal")[0];
+	var loader = document.querySelectorAll("#lightbox .loader")[0];
 	var active_photo_container;
 
 	var openLightbox = function(e)
@@ -14,6 +15,7 @@ var Lightbox = (function() {
 			lightbox.className = "lightbox display";
 			lightbox_bg.className = "lightbox-bg display";
 		}else{
+			loader.className = "loader";
 			modal.className = "modal";
 			modal.innerHTML = "";
 		}
@@ -69,6 +71,7 @@ var Lightbox = (function() {
 				modal.setAttribute("style","width:"+this.width+"px");
 				modal.style.width = this.clientWidth+"px";
 			}
+			loader.className = "loader hide";
 			modal.className = "modal show";
 		}
 	}

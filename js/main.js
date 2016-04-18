@@ -45,8 +45,8 @@ window.onload = function()
 		.onLoad(function()
 		{
 			clicked.innerHTML = "";
-			var loader = document.createElement("IMG");
-			loader.src = "loader.gif";
+			var loader = document.createElement("DIV");
+			loader.className = "loader";
 		
 			clicked.appendChild(loader);
 		})
