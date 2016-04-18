@@ -38,7 +38,7 @@ body{
 }
 
 .row{
-    width: 1000px;
+    max-width: 1000px;
     margin: 0 auto;
 }
     .row:after {
@@ -179,4 +179,17 @@ header .col{
     content: "";
     display: table;
     clear: both;
+}
+
+
+@media only screen and (max-width: 440px){
+    .small-col-12{
+        width: 100%;
+    }
+    .small-col-4{
+        width: 33.3333333%;
+    }
+    header{
+        padding-bottom: 0;
+    }
 }
